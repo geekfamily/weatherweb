@@ -1,0 +1,168 @@
+@import "../../sass/colors";
+@import "../../sass/form";
+@import "../../sass/button";
+@import "../../components/components";
+
+$image-height: 600px;
+
+body {
+  padding: 50px;
+  font-family: 'Open Sans',sans-serif;
+  background-color: $light-gray;
+  color: $black;
+}
+
+a {
+  color: $light-blue;
+}
+
+.navbar {
+  background-color: $white;
+}
+
+.banner {
+  width: 100%;
+  padding: 0 -50px;
+}
+
+.home-header {
+  color: $white;
+  background-color: $black;
+  padding: 5px 50px;
+  text-align: center;
+  font-size: 32pt;
+  margin-bottom: 5px;
+  height: 20px;
+}
+.home-footer {
+  color: $white;
+  background-color: $black;
+  padding: 5px 50px;
+  text-align: center;
+  font-size: 32pt;
+  margin-top: 5px;
+  height: 20px;
+}
+
+.logo-img {
+  height: 75px;
+  margin-top: 25px;
+}
+
+.tshirt-container {
+  height: $image-height;
+  position: relative;
+  display: block;
+  background-color: $gray;
+
+  .tshirt-img {
+    position: absolute;
+    display: block;
+    height: $image-height;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.slogan-block {
+
+  position: absolute;
+  top: 95px;
+  left: 100px;
+
+  .slogan {
+    font-family: 'Open Sans',sans-serif;
+
+    &.first {
+      color: $white;
+      font-size: 136px;
+      line-height: 128px;
+      padding: 0;
+    }
+
+    &.second {
+      color: $black;
+      font-size: 58px;
+      line-height: 63px;
+      font-weight: 800;
+      padding: 0;
+    }
+
+    &.subline {
+      font-size: 18px;
+      width: 516px;
+      margin: 10px 0;
+      line-height: 25px;
+      color: #555;
+    }
+  }
+
+  .btn {
+    margin-top: 20px;
+  }
+}
+
+.order-block {
+  height: 600px;
+  padding: 20px 20px;
+  background-color: $gray;
+
+  .header {
+    font-size: 24pt;
+    margin: 20px -10px;
+    border-bottom: 1px solid $black;
+  }
+
+  .order-area {
+    height: 100%;
+    padding: 0;
+    position: relative;
+    z-index: 10;
+  }
+
+  .tshirt-container {
+
+    height: 100%;
+
+    img {
+      position: absolute;
+      height: 460px;
+      margin: 0;
+      right: 0;
+      top: 50px;
+    }
+  }
+}
+
+.thanks-container {
+
+  text-align: center;
+  padding: 100px 0;
+
+  .slogan {
+    &.first {
+      color: $white;
+      font-size: 136px;
+      line-height: 128px;
+      padding: 0;
+    }
+
+    &.second {
+      color: $black;
+      font-size: 58px;
+      line-height: 63px;
+      font-weight: 800;
+      padding: 0;
+    }
+  }
+
+  .btn {
+    margin-top: 50px;
+  }
+}
+
+.button-bar {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}

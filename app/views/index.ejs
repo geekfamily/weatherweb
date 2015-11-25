@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/sass/bootstrap.css" />
+    <link rel="stylesheet" href="/stylesheets/sass/weatherweb.css" />
+  </head>
+  <body ng-app="myapp">
+
+    <div class="navbar navbar-fixed-top" data-ng-include="'/components/header/header.client.view.html'" data-role="navigation"></div>
+
+    <div ui-view></div>
+
+    <script type="text/javascript">
+        window.user = <%- user || 'null' %>;
+    </script>
+
+    <!-- Load jQuery -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Load local libraries -->
+    <script type="text/javascript" src="/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+    <script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- Load bootstrap files -->
+    <script type="text/javascript" src="/lib/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+
+    <!-- Load the home module -->
+    <script type="text/javascript" src="/home/home.client.module.js"></script>
+    <script type="text/javascript" src="/home/config/home.client.routes.js"></script>
+    <script type="text/javascript" src="/home/controllers/home.client.controller.js"></script>
+
+    <!-- Load the users module -->
+    <script type="text/javascript" src="/users/users.client.module.js"></script>
+    <script type="text/javascript" src="/users/services/authentication.client.service.js"></script>
+
+    <!-- Load components -->
+    <script type="text/javascript" src="/components/components.client.module.js"></script>
+    <script type="text/javascript" src="/components/header/header.client.controller.js"></script>
+
+    <!-- Bootstrap AngularJS application -->
+    <script type="text/javascript" src="/application.js"></script>
+
+  </body>
+</html>

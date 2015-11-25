@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Use the 'title' property to render a page title  -->
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/sass/bootstrap.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" data-ng-include="'/components/header/header.client.view.html'"
+     data-role="navigation"></div>
+<div class="container-fluid">
+    <!-- Display flash messages  -->
+    <% for(var i in messages) { %>
+    <div class="flash"><%= messages[i] %></div>
+    <% } %>
+
+    <!-- Render the signin form  -->
+    <form action="/signin" method="post">
+        <div>
+            <label>Username:</label>
+            <input type="text" name="username"/>
+        </div>
+        <div>
+            <label>Password :</label>
+            <input type="password" name="password"/>
+        </div>
+        <div>
+            <input type="submit" value="Sign In"/>
+        </div>
+    </form>
+
+    <!-- Render the OAuth authentication links  -->
+    <a href="/oauth/facebook">Sign in with Facebook</a>
+    <a href="/oauth/twitter">Sign in with Twitter</a>
+    <a href="/oauth/google">Sign in with Google</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+form {
+  height: 540px;
+
+  .error {
+    font-size: 12pt;
+    color: red;
+  }
+}
+
+
+.row {
+  &.order-hdr {
+    font-size: 14pt;
+    padding: 5px;
+    text-align: center;
+  }
+
+  &.order-divider-hdr {
+    font-size: 16pt;
+    background-color: $light-gray;
+    padding: 5px;
+  }
+
+  &.order-row {
+    font-size: 16pt;
+    padding: 5px;
+
+    .col-sm-4, .col-sm-2, .col-sm-6, .col-sm-8 {
+      padding: 0;
+    }
+  }
+
+  .image-container {
+    text-align: center;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    text-align: center;
+    font-size: 14pt;
+    border-radius: 0;
+    border-color: $white;
+    box-shadow: none;
+  }
+
+}
