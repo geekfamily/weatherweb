@@ -2,7 +2,7 @@
 
 var controller = require('./services.controller.js');
 var server = require('../../../app');
-//var socket = require('./../../services/socketservice');
+var socket = require('./../../services/socketservice');
 
 var spark = {
 
@@ -54,11 +54,10 @@ var spark = {
         var statusCode = status || 200;
 
         try {
-          data = data.substring(data.indexOf("{"));
-          var parsedData = JSON.parse(data).data;
-          //socket.emit('motion_event', parsedData);
+          var parsedData = JSON.parse(data.data);
+          socket.emit('weather_event', parsedData);
         } catch (e) {
-          console.log("not JSON");
+          console.log("Socket emit error: "+ e);
         }
       }
 

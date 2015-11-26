@@ -19,7 +19,38 @@ mainApplicationModule.config(['$stateProvider', '$urlRouterProvider',
 				controller: "HomeController"
 			})
 	}]);
+mainApplicationModule.factory('socket', ['$rootScope', function ($rootScope) {
+    var socket = io.connect('http://localhost:3030', {reconnect: true});
+    console.log("socket created");
 
+    return {
+        on: function (eventName, callback) {
+            function wrapper() {
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    callback.apply(socket, args);
+                });
+            }
+
+            socket.on(eventName, wrapper);
+
+            return function () {
+                socket.removeListener(eventName, wrapper);
+            };
+        },
+
+        emit: function (eventName, data, callback) {
+            socket.emit(eventName, data, function () {
+                var args = arguments;
+                $rootScope.$apply(function () {
+                    if(callback) {
+                        callback.apply(socket, args);
+                    }
+                });
+            });
+        }
+    };
+}]);
 
 // Fix Facebook's OAuth bug
 //if (window.location.hash === '#_=_') window.location.hash = '#!';

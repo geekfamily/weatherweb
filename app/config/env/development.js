@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  db: 'mongodb://localhost/weatherdb',
   sessionSecret: 'developmentSessionSecret',
   facebook: {
     clientID: 'Facebook Application ID',

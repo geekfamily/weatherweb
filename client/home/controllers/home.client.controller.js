@@ -1,30 +1,41 @@
 'use strict';
 
 // Create the 'home' controller
-angular.module('home').controller('HomeController', ['$scope', '$rootScope', 'Authentication', '$resource',
-	function($scope, $rootScope, Authentication, $resource) {
+angular.module('home').controller('HomeController', ['$scope', '$rootScope', 'Authentication', '$resource', 'socket',
+    function ($scope, $rootScope, Authentication, $resource, socket) {
 
-		var devices = $resource('/api/sparkcore/devices');
-		devices.get().$promise.then(success, fail);
+        $scope.weatherObj = {};
 
-		var event = $resource('/api/sparkcore/event',{eventName:'com.geekfamily.weather_update', pin:'' , value:'' });
-		event.get().$promise.then(updateSuccess, updateFail);
+        var devices = $resource('/api/sparkcore/devices');
+        devices.get().$promise.then(success, fail);
 
-		function success(res){
-      $scope.devices = res.result || res;
-    };
+        var event = $resource('/api/sparkcore/event', {eventName: 'com.geekfamily.weather_update'});
+        event.get().$promise.then(updateSuccess, updateFail);
 
-    function fail(res){
+        socket.on("weather_event", function(msg){
+            $scope.weatherObj = msg;
+        });
 
-    };
+        socket.on("socket_status", function(msg){
+            msg;
+        });
 
-		function updateSuccess(res){
-      var motion = res.result.result || res;
-      //$scope.motion = motion===1?"YES":"NO";
-    };
+        function success(res) {
+            $scope.devices = res.result || res;
+        };
 
-    function updateFail(res){
-      //$scope.motion = "YES";
-    };
-	}
+        function fail(res) {
+
+        };
+
+        function updateSuccess(res) {
+            var motion = res.result.result || res;
+            //$scope.motion = motion===1?"YES":"NO";
+        };
+
+        function updateFail(res) {
+            res.result;
+            //$scope.motion = "YES";
+        };
+    }
 ]);

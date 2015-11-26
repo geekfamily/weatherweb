@@ -43,7 +43,8 @@ module.exports = function() {
 	app.use(flash());
 
 	// Load the routing files
-	require('../routes/index.routes.js')(app);
+    require('../routes/records.routes.js')(app);
+	require('../routes/index.routes')(app);
 
 	// Configure static file serving
 	app.use(express.static('./client'));
