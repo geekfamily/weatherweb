@@ -8,14 +8,14 @@ var mongoose = require('mongoose'),
 
 // Define a new 'UserSchema'
 var RecordSchema = new Schema({
-    _id: { type: String, default: uuid.v1()},
-    windDir: String,
-	windSpeedMPH: String,
-	windGustDir: String,
-	humidity: String,
-	tempF: String,
-	rainIn: String,
-	pressure: String,
+    //_id: { type: String, default: uuid.v4()},
+    windDir: Number,
+	windspeedmph: Number,
+	windgustdir: Number,
+	humidity: Number,
+	tempf: Number,
+	rainin: Number,
+	pressure: Number,
 	created: {
 		type: Date,
 		// Create a default 'created' value
