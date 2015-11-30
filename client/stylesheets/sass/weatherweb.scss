@@ -1,23 +1,28 @@
 @import "../../sass/colors";
+@import "../../sass/dimens";
 @import "../../sass/form";
+@import "../../sass/fonts";
 @import "../../sass/button";
 @import "../../components/components";
 
 $image-height: 600px;
 
 body {
-  padding: 50px;
-  font-family: 'Open Sans',sans-serif;
+  font-family: Roboto,'Helvetica Neue',sans-serif;
   background-color: $light-gray;
-  color: $black;
+//  color: $black;
 }
 
 a {
-  color: $light-blue;
+  //color: $light-blue;
+}
+
+md-content {
+  background-color: transparent;
 }
 
 .navbar {
-  background-color: $white;
+  //background-color: $white;
 }
 
 .banner {

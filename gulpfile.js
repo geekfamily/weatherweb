@@ -18,8 +18,8 @@ gulp.task('sass', function () {
 });
 
 gulp.task('static', function () {
-    gulp.src(['./client/images/**'])
-        .pipe(gulp.dest(appRoot+'/client/images'));
+    gulp.src(['./client/img/**'])
+        .pipe(gulp.dest(appRoot+'/client/img'));
     gulp.src(['./client/components/**/*.html'])
         .pipe(gulp.dest(appRoot+'/client/components'));
     gulp.src(['./client/home/**/*.html'])

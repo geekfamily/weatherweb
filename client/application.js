@@ -5,9 +5,9 @@
 var mainApplicationModuleName = 'myapp';
 
 // Create the main application
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router', 'home', 'components', 'users', 'ngResource']);
-mainApplicationModule.config(['$stateProvider', '$urlRouterProvider',
-	function($stateProvider, $urlRouterProvider){
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router', 'home', 'components', 'users', 'ngResource', 'ngMaterial']);
+mainApplicationModule.config(['$stateProvider', '$urlRouterProvider', '$mdThemingProvider',
+	function($stateProvider, $urlRouterProvider, $mdThemingProvider){
 
 		// For any unmatched url, send to /home
 		$urlRouterProvider.otherwise("/home");
@@ -18,6 +18,9 @@ mainApplicationModule.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: "home/views/home.client.view.html",
 				controller: "HomeController"
 			})
+
+        $mdThemingProvider.theme("default").primaryPalette("blue").accentPalette("green");
+
 	}]);
 mainApplicationModule.factory('socket', ['$rootScope', function ($rootScope) {
     var socket = io.connect('http://localhost:3030', {reconnect: true});

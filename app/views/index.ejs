@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:ng="http://angularjs.org">
-  <head>
+<head>
     <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/sass/bootstrap.css" />
-    <link rel="stylesheet" href="/stylesheets/sass/weatherweb.css" />
-  </head>
-  <body ng-app="myapp">
+    <link rel="stylesheet" href="/stylesheets/sass/bootstrap.css"/>
+    <link rel="stylesheet" href="/lib/angular-material/angular-material.min.css"/>
+    <link rel="stylesheet" href="/stylesheets/sass/weatherweb.css"/>
+</head>
+<body ng-app="myapp">
 
-    <div class="navbar navbar-fixed-top" data-ng-include="'/components/header/header.client.view.html'" data-role="navigation"></div>
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+            <md-button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+                <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg">
+                </md-icon>
+            </md-button>
+            <h1>Weather Web </h1>
+        </div>
+    </md-toolbar>
 
     <div ui-view></div>
 
@@ -22,6 +31,9 @@
     <script type="text/javascript" src="/lib/angular/angular.js"></script>
     <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
     <script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="/lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-material/angular-material.min.js"></script>
     <script type="text/javascript" src="/lib/socket.io-client/socket.io.js"></script>
 
     <!-- Load bootstrap files -->
@@ -43,5 +55,5 @@
     <!-- Bootstrap AngularJS application -->
     <script type="text/javascript" src="/application.js"></script>
 
-  </body>
+</body>
 </html>

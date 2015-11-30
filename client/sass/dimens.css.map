@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,eAAgB;EACd,WAAW,EAAE,eAAc",
+"sources": ["dimens.scss"],
+"names": [],
+"file": "dimens.css"
+}

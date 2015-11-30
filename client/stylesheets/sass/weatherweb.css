@@ -1,0 +1,191 @@
+.opacity-50 {
+  opacity: 0.5 !important; }
+
+.margin-left-10 {
+  margin-left: 10px !important; }
+
+form {
+  height: 540px; }
+  form .error {
+    font-size: 12pt;
+    color: red; }
+
+.row.order-hdr {
+  font-size: 14pt;
+  padding: 5px;
+  text-align: center; }
+.row.order-divider-hdr {
+  font-size: 16pt;
+  background-color: #F1F2F2;
+  padding: 5px; }
+.row.order-row {
+  font-size: 16pt;
+  padding: 5px; }
+  .row.order-row .col-sm-4, .row.order-row .col-sm-2, .row.order-row .col-sm-6, .row.order-row .col-sm-8 {
+    padding: 0; }
+.row .image-container {
+  text-align: center; }
+.row input[type="text"] {
+  width: 100%;
+  text-align: center;
+  font-size: 14pt;
+  border-radius: 0;
+  border-color: #fff;
+  box-shadow: none; }
+
+.font-weight-100 {
+  font-weight: 100 !important; }
+
+.btn {
+  background-color: #00AEEF;
+  color: #fff;
+  font-size: 14pt;
+  font-weight: 400;
+  border-radius: 2px;
+  border-collor: #00AEEF; }
+  .btn:hover {
+    background-color: #56d1ff;
+    border-color: #56d1ff;
+    color: #fff; }
+  .btn:focus, .btn:active, .btn:visited, .btn:active:focus {
+    background-color: #00AEEF;
+    border-collor: #00AEEF;
+    color: #fff;
+    outline: none;
+    outline-offset: 0; }
+  .btn.btn-down {
+    border-radius: 4px 0 0 4px;
+    position: absolute;
+    right: 0; }
+  .btn.btn-up {
+    border-radius: 0 4px 4px 0; }
+
+.order-table .btn {
+  padding: 2px 10px; }
+
+.buy-btn {
+  z-index: 100;
+  padding: 15px;
+  font-weight: 600; }
+
+.btn[disabled] {
+  background-color: #F1F2F2;
+  border-collor: #F1F2F2;
+  color: #ccc; }
+
+body {
+  font-family: Roboto,'Helvetica Neue',sans-serif;
+  background-color: #F1F2F2; }
+
+md-content {
+  background-color: transparent; }
+
+.banner {
+  width: 100%;
+  padding: 0 -50px; }
+
+.home-header {
+  color: #fff;
+  background-color: #222;
+  padding: 5px 50px;
+  text-align: center;
+  font-size: 32pt;
+  margin-bottom: 5px;
+  height: 20px; }
+
+.home-footer {
+  color: #fff;
+  background-color: #222;
+  padding: 5px 50px;
+  text-align: center;
+  font-size: 32pt;
+  margin-top: 5px;
+  height: 20px; }
+
+.logo-img {
+  height: 75px;
+  margin-top: 25px; }
+
+.tshirt-container {
+  height: 600px;
+  position: relative;
+  display: block;
+  background-color: #ccc; }
+  .tshirt-container .tshirt-img {
+    position: absolute;
+    display: block;
+    height: 600px;
+    right: 0;
+    bottom: 0; }
+
+.slogan-block {
+  position: absolute;
+  top: 95px;
+  left: 100px; }
+  .slogan-block .slogan {
+    font-family: 'Open Sans',sans-serif; }
+    .slogan-block .slogan.first {
+      color: #fff;
+      font-size: 136px;
+      line-height: 128px;
+      padding: 0; }
+    .slogan-block .slogan.second {
+      color: #222;
+      font-size: 58px;
+      line-height: 63px;
+      font-weight: 800;
+      padding: 0; }
+    .slogan-block .slogan.subline {
+      font-size: 18px;
+      width: 516px;
+      margin: 10px 0;
+      line-height: 25px;
+      color: #555; }
+  .slogan-block .btn {
+    margin-top: 20px; }
+
+.order-block {
+  height: 600px;
+  padding: 20px 20px;
+  background-color: #ccc; }
+  .order-block .header {
+    font-size: 24pt;
+    margin: 20px -10px;
+    border-bottom: 1px solid #222; }
+  .order-block .order-area {
+    height: 100%;
+    padding: 0;
+    position: relative;
+    z-index: 10; }
+  .order-block .tshirt-container {
+    height: 100%; }
+    .order-block .tshirt-container img {
+      position: absolute;
+      height: 460px;
+      margin: 0;
+      right: 0;
+      top: 50px; }
+
+.thanks-container {
+  text-align: center;
+  padding: 100px 0; }
+  .thanks-container .slogan.first {
+    color: #fff;
+    font-size: 136px;
+    line-height: 128px;
+    padding: 0; }
+  .thanks-container .slogan.second {
+    color: #222;
+    font-size: 58px;
+    line-height: 63px;
+    font-weight: 800;
+    padding: 0; }
+  .thanks-container .btn {
+    margin-top: 50px; }
+
+.button-bar {
+  position: absolute;
+  bottom: 0px;
+  right: 0px; }
+
+/*# sourceMappingURL=weatherweb.css.map */
