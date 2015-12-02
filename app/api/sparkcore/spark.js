@@ -64,17 +64,11 @@ var spark = {
                 var statusCode = status || 200;
 
                 try {
-<<<<<<< HEAD
                     if (null!=data) {
                         var parsedData = JSON.parse(data.data);
                         socket.emit('weather_event', parsedData);
                         dbcontroller.createRecord(parsedData);
                     }
-=======
-                    var parsedData = JSON.parse(data.data);
-                    socket.emit('weather_event', parsedData);
-                    dbcontroller.createRecord(parsedData);
->>>>>>> 7a63865ac17149ffd02380c6042aaf37ec43c276
                 } catch (e) {
                     console.log("Socket emit error: " + e);
                 }

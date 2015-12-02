@@ -4,6 +4,7 @@
 @import "../../sass/fonts";
 @import "../../sass/button";
 @import "../../components/components";
+@import "../../sass/layout";
 
 $image-height: 600px;
 
@@ -23,6 +24,17 @@ md-content {
 
 .navbar {
   //background-color: $white;
+}
+
+.widget {
+  background-color: $white;
+
+  p {
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+  }
 }
 
 .banner {

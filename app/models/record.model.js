@@ -3,8 +3,7 @@
 
 // Load the Mongoose module and Schema object
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema,
-    uuid = require('node-uuid');
+	Schema = mongoose.Schema;
 
 // Define a new 'UserSchema'
 var RecordSchema = new Schema({
@@ -14,6 +13,7 @@ var RecordSchema = new Schema({
 	windgustdir: Number,
 	humidity: Number,
 	tempf: Number,
+    barotemp: Number,
 	rainin: Number,
 	pressure: Number,
 	created: {

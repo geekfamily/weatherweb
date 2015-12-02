@@ -1,229 +1,134 @@
 <md-content class="md-padding" layout-wrap layout-align="center start">
 
-    <div class="layout-margin layout-sm-column layout-row"
-         dragula="&quot;drag-analytics-container&quot;">
-        <div class="widget md-whiteframe-z2 md-orange-theme flex layout-column"
-             ng-class="::{'widget-overlay-title': vm.overlayTitle}" palette-background="deep-orange:500"
-             content-layout="row" content-layout-align="space-between center" content-padding="" title=""
-             layout="column"
-             style="border-color: rgb(255, 87, 34); color: rgb(255, 255, 255); background-color: rgb(255, 87, 34);">
+    <div flex layout="row">
+        <div flex class="layout-margin">
+            <div class="widget md-whiteframe-z2 flex layout-row"
+                 title=""
+                 layout="row"
+                 style="border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(255, 255, 255);">
 
-            <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
-                 ng-class="{'layout-padding': vm.contentPadding}" layout="row"
-                 layout-align="space-between center" flex-order="2">
-                <div class="ng-scope">
-                    <img class="opacity-50 margin-left-10 md-orange-theme md-font fa fa-comments material-icons" src="/img/weather/Degrees-Fahrenheit.svg"/>
-                </div>
-                <div class="ng-scope layout-align-center-end layout-column">
-                    <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
-                       countupto="54" decimals="0">{{weatherObj.tempf}}</p>
+                <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
+                     ng-class="{'layout-padding': vm.contentPadding}" layout="row"
+                     layout-align="space-between center" flex-order="1">
+                    <div class="ng-scope">
+                        <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Degrees-Fahrenheit.svg"/>
+                    </div>
+                    <div class="ng-scope layout-align-center-end layout-column">
+                        <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
+                           countupto="54" decimals="0">{{weatherObj.tempf}}</p>
 
-                    <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope" translate="">Temperature</p>
+                        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Current Weather</p>
+                    </div>
                 </div>
+
             </div>
-
-            <div class="widget-loading ng-hide layout-fill layout-align-center-center layout-row"
-                 ng-show="vm.loading" aria-hidden="true">
-                <div class="widget-loading-inner ng-hide" ng-show="vm.loading" aria-hidden="true">
-                    <md-progress-circular md-mode="indeterminate" aria-valuemin="0" aria-valuemax="100"
-                                          role="progressbar" class="ng-scope md-orange-theme"
-                                          style="transform: scale(0.5);">
-                        <div class="md-spinner-wrapper md-mode-indeterminate">
-                            <div class="md-inner">
-                                <div class="md-gap"></div>
-                                <div class="md-left">
-                                    <div class="md-half-circle"></div>
-                                </div>
-                                <div class="md-right">
-                                    <div class="md-half-circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </md-progress-circular>
-                </div>
-            </div>
-
-        </div>
-        <div class="widget md-whiteframe-z2 md-orange-theme flex layout-column"
-             ng-class="::{'widget-overlay-title': vm.overlayTitle}" palette-background="triCyan:500"
-             content-layout="row" content-layout-align="space-between center" content-padding="" title=""
-             layout="column"
-             style="border-color: rgb(0, 188, 212); color: rgb(255, 255, 255); background-color: rgb(0, 188, 212);">
-
-            <!-- ngIf: ::(vm.title || vm.subtitle) -->
-
-            <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
-                 ng-class="{'layout-padding': vm.contentPadding}" layout="row"
-                 layout-align="space-between center" flex-order="2">
-                <div class="ng-scope">
-                    <img class="opacity-50 margin-left-10 md-orange-theme md-font fa fa-comments material-icons" src="/img/weather/Cloud-Rain.svg"/>
-                </div>
-                <div class="ng-scope layout-align-center-end layout-column">
-                    <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
-                       countupto="101" decimals="0">{{weatherObj.rainin}}</p>
-
-                    <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope" translate="">Rainfall</p>
-                </div>
-            </div>
-
-            <div class="widget-loading ng-hide layout-fill layout-align-center-center layout-row"
-                 ng-show="vm.loading" aria-hidden="true">
-                <div class="widget-loading-inner ng-hide" ng-show="vm.loading" aria-hidden="true">
-                    <md-progress-circular md-mode="indeterminate" aria-valuemin="0" aria-valuemax="100"
-                                          role="progressbar" class="ng-scope md-orange-theme"
-                                          style="transform: scale(0.5);">
-                        <div class="md-spinner-wrapper md-mode-indeterminate">
-                            <div class="md-inner">
-                                <div class="md-gap"></div>
-                                <div class="md-left">
-                                    <div class="md-half-circle"></div>
-                                </div>
-                                <div class="md-right">
-                                    <div class="md-half-circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </md-progress-circular>
-                </div>
-            </div>
-
         </div>
 
-        <div class="widget md-whiteframe-z2 md-orange-theme flex layout-column"
-             ng-class="::{'widget-overlay-title': vm.overlayTitle}" palette-background="indigo:500"
-             content-layout="row" content-layout-align="space-between center" content-padding="" title=""
-             layout="column"
-             style="border-color: rgb(0, 150, 136); color: rgb(255, 255, 255); background-color: rgb(0, 150, 136);"
-             >
+        <div flex layout="column">
+            <div flex class="layout-margin">
+                <div class="widget md-whiteframe-z2 flex layout-column"
+                     title=""
+                     layout="column"
+                     style="border-color: rgb(255, 87, 34); color: rgb(255, 255, 255); background-color: rgb(255, 87, 34);">
 
-            <!-- ngIf: ::(vm.title || vm.subtitle) -->
-
-            <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
-                 ng-class="{'layout-padding': vm.contentPadding}" layout="row"
-                 layout-align="space-between center" flex-order="2">
-                <div class="ng-scope">
-                    <img class="opacity-50 margin-left-10 md-orange-theme md-font fa fa-comments material-icons" src="/img/weather/Wind.svg"/>
-                </div>
-                <div class="ng-scope layout-align-center-end layout-column">
-                    <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 ng-isolate-scope"
-                       countupto="943" decimals="0">{{weatherObj.windspeedmph}}</p>
-
-                    <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope" translate="">Wind Speed</p>
-                </div>
-            </div>
-
-            <div class="widget-loading ng-hide layout-fill layout-align-center-center layout-row"
-                 ng-show="vm.loading" aria-hidden="true">
-                <div class="widget-loading-inner ng-hide" ng-show="vm.loading" aria-hidden="true">
-                    <md-progress-circular md-mode="indeterminate" aria-valuemin="0" aria-valuemax="100"
-                                          role="progressbar" class="ng-scope md-orange-theme"
-                                          style="transform: scale(0.5);">
-                        <div class="md-spinner-wrapper md-mode-indeterminate">
-                            <div class="md-inner">
-                                <div class="md-gap"></div>
-                                <div class="md-left">
-                                    <div class="md-half-circle"></div>
-                                </div>
-                                <div class="md-right">
-                                    <div class="md-half-circle"></div>
-                                </div>
-                            </div>
+                    <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
+                         ng-class="{'layout-padding': vm.contentPadding}" layout="row"
+                         layout-align="space-between center" flex-order="2">
+                        <div class="ng-scope">
+                            <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Degrees-Fahrenheit.svg"/>
                         </div>
-                    </md-progress-circular>
-                </div>
-            </div>
+                        <div class="ng-scope layout-align-center-end layout-column">
+                            <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
+                               countupto="54" decimals="0">{{weatherObj.tempf}}</p>
 
-        </div>
-        <div class="widget md-whiteframe-z2 md-orange-theme flex layout-column"
-             ng-class="::{'widget-overlay-title': vm.overlayTitle}" palette-background="teal:500"
-             content-layout="row" content-layout-align="space-between center" content-padding="" title=""
-             layout="column"
-             style="border-color: #fdd835; color: rgb(255, 255, 255); background-color: #fdd835;">
-
-            <!-- ngIf: ::(vm.title || vm.subtitle) -->
-
-            <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
-                 ng-class="{'layout-padding': vm.contentPadding}" layout="row"
-                 layout-align="space-between center" flex-order="2">
-                <div class="ng-scope">
-                    <img class="opacity-50 margin-left-10 md-orange-theme md-font fa fa-comments material-icons" src="/img/weather/Cloud.svg"/>
-                </div>
-                <div class="ng-scope layout-align-center-end layout-column">
-                    <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 ng-isolate-scope"
-                       countupto="944" decimals="0">{{weatherObj.humidity}}</p>
-
-                    <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope" translate="">Humidity</p>
-                </div>
-            </div>
-
-            <div class="widget-loading ng-hide layout-fill layout-align-center-center layout-row"
-                 ng-show="vm.loading" aria-hidden="true">
-                <div class="widget-loading-inner ng-hide" ng-show="vm.loading" aria-hidden="true">
-                    <md-progress-circular md-mode="indeterminate" aria-valuemin="0" aria-valuemax="100"
-                                          role="progressbar" class="ng-scope md-orange-theme"
-                                          style="transform: scale(0.5);">
-                        <div class="md-spinner-wrapper md-mode-indeterminate">
-                            <div class="md-inner">
-                                <div class="md-gap"></div>
-                                <div class="md-left">
-                                    <div class="md-half-circle"></div>
-                                </div>
-                                <div class="md-right">
-                                    <div class="md-half-circle"></div>
-                                </div>
-                            </div>
+                            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Temperature (F)</p>
                         </div>
-                    </md-progress-circular>
+                    </div>
+
                 </div>
             </div>
+            <div flex class="layout-margin">
+                <div class="widget md-whiteframe-z2 flex layout-column"
+                     title=""
+                     layout="column"
+                     style="border-color: rgb(0, 188, 212); color: rgb(255, 255, 255); background-color: rgb(0, 188, 212);">
 
+                    <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
+                         ng-class="{'layout-padding': vm.contentPadding}" layout="row"
+                         layout-align="space-between center" flex-order="2">
+                        <div class="ng-scope">
+                            <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Cloud-Rain.svg"/>
+                        </div>
+                        <div class="ng-scope layout-align-center-end layout-column">
+                            <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
+                               countupto="101" decimals="0">{{weatherObj.rainin}}</p>
+
+                            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Rainfall (Inches)</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
+        <div flex layout="column">
+            <div flex class="layout-margin">
+                <div class="widget md-whiteframe-z2 flex layout-column"
+                     title=""
+                     layout="column"
+                     style="border-color: rgb(0, 150, 136); color: rgb(255, 255, 255); background-color: rgb(0, 150, 136);">
+
+                    <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
+                         ng-class="{'layout-padding': vm.contentPadding}" layout="row"
+                         layout-align="space-between center" flex-order="2">
+                        <div class="ng-scope">
+                            <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Wind.svg"/>
+                        </div>
+                        <div class="ng-scope layout-align-center-end layout-column">
+                            <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 ng-isolate-scope"
+                               countupto="943" decimals="0">{{getWindDirection()}}:{{weatherObj.windspeedmph}}</p>
+
+                            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Wind Speed (MPH)</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div flex class="layout-margin">
+                <div class="widget md-whiteframe-z2 flex layout-column"
+                     title=""
+                     layout="column"
+                     style="border-color: #ffc107; color: rgb(255, 255, 255); background-color: #ffc107;">
+
+                    <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
+                         ng-class="{'layout-padding': vm.contentPadding}" layout="row"
+                         layout-align="space-between center" flex-order="2">
+                        <div class="ng-scope">
+                            <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Degrees-Fahrenheit.svg"/>
+                        </div>
+                        <div class="ng-scope layout-align-center-end layout-column">
+                            <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
+                               countupto="54" decimals="0">{{weatherObj.humidity}}</p>
+
+                            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Humidity (%)</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="layout-margin layout-sm-column layout-row">
-        <div class="widget md-whiteframe-z2 md-orange-theme flex layout-column"
-             ng-class="::{'widget-overlay-title': vm.overlayTitle}" chartjs-line-widget="" title=""
-             subtitle="DASHBOARDS.ANALYTICS.DATE" content-layout="row" content-padding="" layout="column">
-
-            <div class="widget-content layout-padding layout-row layout-align-start-start flex-order-2"
-                 ng-class="{'layout-padding': vm.contentPadding}" layout="row" layout-align=""
-                 flex-order="2">
-                <div class="chart-container">
-                    <canvas class="chart-line ng-scope ng-isolate-scope" chart-data="lineChart.data"
-                            chart-labels="lineChart.labels" chart-legend="true" chart-series="lineChart.series"
-                            chart-options="lineChart.options" width="788" height="392"
-                            style="width: 394px; height: 196px;"></canvas>
-                    <chart-legend>
-                        <ul class="line-legend">
-                            <li><span style="background-color:rgba(66,133,244,1)"></span>Pageviews</li>
-                            <li><span style="background-color:rgba(219,68,55,1)"></span>Visits</li>
-                            <li><span style="background-color:rgba(244,180,0,1)"></span>Sign ups</li>
-                        </ul>
-                    </chart-legend>
-                </div>
-            </div>
-        </div>
-        <div class="widget md-whiteframe-z2 md-orange-theme flex layout-column"
-             ng-class="::{'widget-overlay-title': vm.overlayTitle}" chartjs-pie-widget="" title=""
-             subtitle="DASHBOARDS.ANALYTICS.DATE" content-padding="" layout="column">
-
-            <div class="widget-content layout-padding layout-column layout-align-start-start flex-order-2"
-                 ng-class="{'layout-padding': vm.contentPadding}" layout="column" layout-align=""
-                 flex-order="2">
-                <div class="chart-container">
-                    <canvas class="chart-doughnut ng-scope ng-isolate-scope" chart-data="pieChart.data"
-                            chart-legend="true" chart-labels="pieChart.labels" width="788" height="394"
-                            style="width: 394px; height: 197px;"></canvas>
-                    <chart-legend>
-                        <ul class="doughnut-legend">
-                            <li><span style="background-color:rgba(66,133,244,1)"></span>Facebook</li>
-                            <li><span style="background-color:rgba(219,68,55,1)"></span>Twitter</li>
-                            <li><span style="background-color:rgba(244,180,0,1)"></span>Google+</li>
-                            <li><span style="background-color:rgba(15,157,88,1)"></span>Others</li>
-                        </ul>
-                    </chart-legend>
-                </div>
+    <div flex layout="row">
+        <div flex class="layout-margin">
+            <div class="widget md-whiteframe-z2 flex layout-column"
+                 chartjs-line-widget=""
+                 title=""
+                 subtitle="DASHBOARDS.ANALYTICS.DATE"
+                 content-layout="row"
+                 content-padding=""
+                 layout="column">
+                    <h2>Temperature vs Wind Speed vs Humidity</h2>
+                    <div flex id="chartdiv" class="chart-container"></div>
             </div>
         </div>
     </div>

@@ -73,12 +73,29 @@ form {
   border-collor: #F1F2F2;
   color: #ccc; }
 
+.main-tile {
+  background-color: red; }
+
+.widget h2 {
+  margin-left: 20pt;
+  font-weight: 200; }
+.widget #chartdiv {
+  margin: 20pt; }
+
 body {
   font-family: Roboto,'Helvetica Neue',sans-serif;
   background-color: #F1F2F2; }
 
 md-content {
   background-color: transparent; }
+
+.widget {
+  background-color: #fff; }
+  .widget p {
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px; }
 
 .banner {
   width: 100%;

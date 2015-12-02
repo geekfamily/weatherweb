@@ -55,6 +55,13 @@ mainApplicationModule.factory('socket', ['$rootScope', function ($rootScope) {
     };
 }]);
 
+google.load('visualization', '1.1', {packages:['line']});
+
+google.setOnLoadCallback(function () {
+    angular.bootstrap(mainApplicationModule, [mainApplicationModuleName]);
+});
+
+
 // Fix Facebook's OAuth bug
 //if (window.location.hash === '#_=_') window.location.hash = '#!';
 
