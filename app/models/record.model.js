@@ -16,6 +16,7 @@ var RecordSchema = new Schema({
     barotemp: Number,
 	rainin: Number,
 	pressure: Number,
+    heatindex: Number,
 	created: {
 		type: Date,
 		// Create a default 'created' value

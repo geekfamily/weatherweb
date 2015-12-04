@@ -1,5 +1,10 @@
 .main-tile {
-  background-color: red;
+
+  .margin-top-40 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
 }
 
 .widget {
@@ -12,5 +17,10 @@
   #chartdiv {
     margin: 20pt;
   }
+
+}
+
+img.main-icon {
+  height: 105pt;
 
 }

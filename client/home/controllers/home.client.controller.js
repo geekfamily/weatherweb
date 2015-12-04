@@ -4,46 +4,76 @@
 angular.module('home').controller('HomeController', ['$scope', '$rootScope', 'Authentication', '$resource', 'socket', '$http',
     function ($scope, $rootScope, Authentication, $resource, socket, $http) {
 
-        // Load the Visualization API and the piechart package.
-        //google.load('visualization', '1.0', {'packages':['corechart']});
+        $scope.midPointTemp = 50;
+
+        //configure chart visual options
         var options = {
-            colors: ['#ff9800', '#009688', "#ffc107"],
+            colors: ['#ff9800', '#4caf50', "#2196f3"],
             lineWidth: 2,
-            height: 400,
             hAxis: {
-                minValue: 0
+                minValue: 0,
+                gridlines: { count: 5 }
             },
             vAxis: {
                 gridlines: { count: 5 }
             },
             curveType: 'function',
-            legend: { position: 'bottom' }
+            legend: { position: 'bottom' },
+            animation:{
+                duration: 1000,
+                easing: 'out'
+            },
+            title: 'Temperature vs Wind Speed vs Humidity'
         };
 
+        //configure the line chart
         var chart = new google.charts.Line(document.getElementById('chartdiv'));
+        //drawChart([]);
+        //configure default object values
+        $scope.weatherObj = {windDir: 0,
+                                windspeedmph: 0,
+                                windgustdir: 0,
+                                humidity: 0,
+                                tempf: 0,
+                                barotemp: 0,
+                                rainin: 0,
+                                pressure: 0,
+                                heatindex: 0};
+        $scope.summary = "NA";
+        $scope.icon = "/img/weather/Sun.svg";
 
-        $scope.weatherObj = {};
-        $scope.results = [];
-
+        //verify we can connect to a photon device
         var devices = $resource('/api/sparkcore/devices');
         devices.get().$promise.then(success, fail);
 
+        //configure the eventing process for continous updates
         var event = $resource('/api/sparkcore/event', {eventName: 'com.geekfamily.weather_update'});
         event.get().$promise.then(updateSuccess, updateFail);
 
+        //make the view configuraiton calls
+        var current = $resource('/api/weatherio/current');
+        current.get().$promise.then(weatherioSuccess, weatherioFail);
+
+        var current = $resource('/api/weather/current');
+        current.get().$promise.then(weatherSuccess, weatherFail);
+
+        //call the db data for the history chart... needs to be reworked
         $http.get('/records').
-        then(function(response) {
-            if (response.status = 200){
-                $scope.results = response.data;
-                //chart.draw(buildDataSet(response.data), google.charts.Line.convertOptions(options));
-                chart.draw(buildDataSet(response.data), options);
-            }
-            response.toString();
-        }, function(response) {
-            response.toString();
+            then(function(response) {
+                if (response.status = 200){
+                    drawChart(response.data);
+                }
+                response.toString();
+            }, function(response) {
+                response.toString();
 
         });
 
+        function drawChart(dataSet){
+            chart.draw(buildDataSet(dataSet), google.charts.Line.convertOptions(options));
+        }
+
+        //build the dataset to be displayed
         function buildDataSet(dataSet) {
             var data = new google.visualization.DataTable();
             data.addColumn('datetime', 'Time');
@@ -61,27 +91,83 @@ angular.module('home').controller('HomeController', ['$scope', '$rootScope', 'Au
             return data;
         }
 
-        socket.on("weather_event", function(msg){
-            $scope.weatherObj = msg;
+
+        socket.on("weather_event", function(data){
+            $scope.weatherObj = data;
         });
 
-        socket.on("socket_status", function(msg){
-            msg;
-        });
-
-        function success(res) {
-            $scope.devices = res.result || res;
+        function success(data) {
+            $scope.devices = data.result || data;
         };
 
         function fail(res) {
 
         };
 
-        function updateSuccess(res) {
-            res.result;
+        function updateSuccess(data) {
+            data.result;
         };
 
         function updateFail(res) {
+            res.result;
+        };
+
+        function weatherSuccess(data) {
+            $scope.weatherObj = data;
+        }
+
+        function weatherFail(res) {
+            res.result;
+        };
+
+        function weatherioSuccess(res) {
+            var state = res.result;
+            $scope.summary = state.summary;
+            switch(state.icon){
+                case 'clear-night':
+                    $scope.icon = "/img/weather/Moon.svg";
+                    break;
+                case 'rain':
+                    $scope.icon = "/img/weather/Cloud-Rain.svg";
+                    break;
+                case 'snow':
+                    $scope.icon = "/img/weather/Snowflake.svg";
+                    break;
+                case'sleet':
+                    $scope.icon = "/img/weather/Cloud-Snow.svg";
+                    break;
+                case 'wind':
+                    $scope.icon = "/img/weather/Cloud-Wind.svg";
+                    break;
+                case 'fog':
+                    $scope.icon = "/img/weather/Cloud-Fog.svg";
+                    break;
+                case 'cloudy':
+                    $scope.icon = "/img/weather/Cloud.svg";
+                    break;
+                case 'partly-cloudy-day':
+                    $scope.icon = "/img/weather/Cloud-Sun.svg";
+                    break;
+                case 'partly-cloudy-night':
+                    $scope.icon = "/img/weather/Cloud-Moon.svg";
+                    break;
+                case 'hail':
+                    $scope.icon = "/img/weather/Cloud-Hail.svg";
+                    break;
+                case 'thunderstorm':
+                    $scope.icon = "/img/weather/Degrees-Fahrenheit.svg";
+                    break;
+                case 'tornado':
+                    $scope.icon = "/img/weather/Tornado.svg";
+                    break;
+                default:
+                    //clear day
+                    $scope.icon = "/img/weather/Sun.svg";
+            }
+
+        };
+
+        function weatherioFail(res) {
             res.result;
         };
 
@@ -116,6 +202,5 @@ angular.module('home').controller('HomeController', ['$scope', '$rootScope', 'Au
                     return "NA";
             }
         }
-
     }
 ]);

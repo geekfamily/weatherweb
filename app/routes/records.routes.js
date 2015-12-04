@@ -9,12 +9,5 @@ module.exports = function(app) {
 	   		.post(records.create)
 	   		.get(records.dayList);
 
-	// Set up the 'records' parameterized routes
-	//app.route('/records/:recordId')
-	//		.get(records.read)
-	//		.put(records.update)
-	//		.delete(records.delete);
-    //
-    //app.route('/record')
-	//		.post(records.create);
+
 };

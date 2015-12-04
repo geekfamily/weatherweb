@@ -1,15 +1,15 @@
 'use strict';
 
-var controller = require('./services.controller.js');
+var photonSvc = require('./particleio.js');
 var server = require('../../../app');
-var socket = require('./../../services/socketservice');
-var db = require('./../../services/dbservice');
-var dbcontroller = require('./../../controllers/records.controller');
+var socket = require('./../socketservice');
+var db = require('./../dbservice');
+var dbcontroller = require('./../../controllers/records.controller.js');
 
 var spark = {
 
     devices: function (req, res) {
-        controller.getDevices({}, function (result) {
+        photonSvc.getDevices({}, function (result) {
             var err = {};
             var status;
             var statusCode = status || 200;
@@ -24,7 +24,7 @@ var spark = {
     },
 
     callFunction: function (req, res) {
-        controller.callFunction({
+        photonSvc.callFunction({
             functionName: req.query.functionName,
             pin: req.query.pin,
             value: req.query.value
@@ -40,7 +40,7 @@ var spark = {
     },
 
     runFunction: function (req, res) {
-        controller.runFunction({
+        photonSvc.runFunction({
             functionName: req.query.functionName,
             pin: req.query.pin,
             value: req.query.value
@@ -56,7 +56,7 @@ var spark = {
     },
 
     eventListen: function (req, res) {
-        controller.eventListen({eventName: req.query.eventName}, function (err, data) {
+        photonSvc.eventListen({eventName: req.query.eventName}, function (err, data) {
             if (err) {
                 res.type('application/json').send(statusCode, {metadata: {}, result: err});
             } else {

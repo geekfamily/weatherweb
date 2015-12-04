@@ -1,135 +1,94 @@
 <md-content class="md-padding" layout-wrap layout-align="center start">
 
-    <div flex layout="row">
-        <div flex class="layout-margin">
-            <div class="widget md-whiteframe-z2 flex layout-row"
-                 title=""
-                 layout="row"
-                 style="border-color: rgb(255, 255, 255); color: rgb(255, 255, 255); background-color: rgb(255, 255, 255);">
-
+    <div layout="row" layout-sm="column">
+        <div flex="25" flex-sm="100" layout="column" class="layout-margin">
+            <div class="widget md-whiteframe-z2 flex layout-column main-tile" ng-class="weatherObj.tempf>midPointTemp?'card1-hot':'card1-cold'">
                 <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
-                     ng-class="{'layout-padding': vm.contentPadding}" layout="row"
-                     layout-align="space-between center" flex-order="1">
-                    <div class="ng-scope">
-                        <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Degrees-Fahrenheit.svg"/>
+                      layout="row" layout-align="space-between center" flex-order="2">
+                    <img class="opacity-50 margin-left-10 md-font" src="{{icon}}"/>
+                    <div class="layout-align-center-end layout-column">
+                        <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
+                           countupto="54" decimals="0">{{weatherObj.tempf}}</p>
+                        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">{{summary}}<br>feels like {{weatherObj.heatindex}} f</p>
                     </div>
-                    <div class="ng-scope layout-align-center-end layout-column">
+                </div>
+            </div>
+
+            <div class="widget md-whiteframe-z2 flex layout-column" ng-class="weatherObj.tempf>midPointTemp?'card2-hot':'card2-cold'">
+                <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
+                      layout="row"
+                     layout-align="space-between center" flex-order="2">
+                    <img class="opacity-50 margin-left-10 md-font" src="/img/weather/Thermometer-50.svg"/>
+                    <div class="layout-align-center-end layout-column">
                         <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
                            countupto="54" decimals="0">{{weatherObj.tempf}}</p>
 
-                        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Current Weather</p>
+                        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Temperature (F)</p>
                     </div>
                 </div>
+            </div>
 
+            <div class="widget md-whiteframe-z2 flex layout-column" ng-class="weatherObj.tempf>midPointTemp?'card3-hot':'card3-cold'">
+                <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
+                      layout="row"
+                     layout-align="space-between center" flex-order="2">
+                    <div>
+                        <img class="opacity-50 margin-left-10 md-font" src="/img/weather/Cloud-Rain.svg"/>
+                    </div>
+                    <div class="layout-align-center-end layout-column">
+                        <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
+                           countupto="101" decimals="0">{{weatherObj.rainin}}</p>
+
+                        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Rainfall (Inches)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget md-whiteframe-z2 flex layout-column" ng-class="weatherObj.tempf>midPointTemp?'card4-hot':'card4-cold'">
+                <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
+                      layout="row"
+                     layout-align="space-between center" flex-order="2">
+                    <div>
+                        <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Wind.svg"/>
+                    </div>
+                    <div class="layout-align-center-end layout-column">
+                        <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 ng-isolate-scope"
+                           countupto="943" decimals="0">{{getWindDirection()}}:{{weatherObj.windspeedmph}}</p>
+
+                        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Wind Speed (MPH)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="widget md-whiteframe-z2 flex layout-column" ng-class="weatherObj.tempf>midPointTemp?'card5-hot':'card5-cold'">
+                <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
+                      layout="row"
+                     layout-align="space-between center" flex-order="2">
+                    <div>
+                        <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Degrees-Fahrenheit.svg"/>
+                    </div>
+                    <div class="layout-align-center-end layout-column">
+                        <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
+                           countupto="54" decimals="0">{{weatherObj.humidity}}</p>
+
+                        <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Humidity (%)</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div flex layout="column">
-            <div flex class="layout-margin">
-                <div class="widget md-whiteframe-z2 flex layout-column"
-                     title=""
-                     layout="column"
-                     style="border-color: rgb(255, 87, 34); color: rgb(255, 255, 255); background-color: rgb(255, 87, 34);">
+        <div flex="70" flex-sm="100" layout="column" class="layout-margin">
 
-                    <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
-                         ng-class="{'layout-padding': vm.contentPadding}" layout="row"
-                         layout-align="space-between center" flex-order="2">
-                        <div class="ng-scope">
-                            <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Degrees-Fahrenheit.svg"/>
-                        </div>
-                        <div class="ng-scope layout-align-center-end layout-column">
-                            <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
-                               countupto="54" decimals="0">{{weatherObj.tempf}}</p>
-
-                            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Temperature (F)</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div flex class="layout-margin">
-                <div class="widget md-whiteframe-z2 flex layout-column"
-                     title=""
-                     layout="column"
-                     style="border-color: rgb(0, 188, 212); color: rgb(255, 255, 255); background-color: rgb(0, 188, 212);">
-
-                    <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
-                         ng-class="{'layout-padding': vm.contentPadding}" layout="row"
-                         layout-align="space-between center" flex-order="2">
-                        <div class="ng-scope">
-                            <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Cloud-Rain.svg"/>
-                        </div>
-                        <div class="ng-scope layout-align-center-end layout-column">
-                            <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
-                               countupto="101" decimals="0">{{weatherObj.rainin}}</p>
-
-                            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Rainfall (Inches)</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div flex layout="column">
-            <div flex class="layout-margin">
-                <div class="widget md-whiteframe-z2 flex layout-column"
-                     title=""
-                     layout="column"
-                     style="border-color: rgb(0, 150, 136); color: rgb(255, 255, 255); background-color: rgb(0, 150, 136);">
-
-                    <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
-                         ng-class="{'layout-padding': vm.contentPadding}" layout="row"
-                         layout-align="space-between center" flex-order="2">
-                        <div class="ng-scope">
-                            <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Wind.svg"/>
-                        </div>
-                        <div class="ng-scope layout-align-center-end layout-column">
-                            <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 ng-isolate-scope"
-                               countupto="943" decimals="0">{{getWindDirection()}}:{{weatherObj.windspeedmph}}</p>
-
-                            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Wind Speed (MPH)</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div flex class="layout-margin">
-                <div class="widget md-whiteframe-z2 flex layout-column"
-                     title=""
-                     layout="column"
-                     style="border-color: #ffc107; color: rgb(255, 255, 255); background-color: #ffc107;">
-
-                    <div class="widget-content layout-padding layout-row layout-align-space-between-center flex-order-2"
-                         ng-class="{'layout-padding': vm.contentPadding}" layout="row"
-                         layout-align="space-between center" flex-order="2">
-                        <div class="ng-scope">
-                            <img class="opacity-50 margin-left-10 md-font fa fa-comments material-icons" src="/img/weather/Degrees-Fahrenheit.svg"/>
-                        </div>
-                        <div class="ng-scope layout-align-center-end layout-column">
-                            <p class="md-display-3 font-weight-100 margin-top-0 margin-bottom-0 text-ellipsis ng-isolate-scope"
-                               countupto="54" decimals="0">{{weatherObj.humidity}}</p>
-
-                            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-0 ng-scope">Humidity (%)</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div flex layout="row">
-        <div flex class="layout-margin">
-            <div class="widget md-whiteframe-z2 flex layout-column"
-                 chartjs-line-widget=""
-                 title=""
-                 subtitle="DASHBOARDS.ANALYTICS.DATE"
-                 content-layout="row"
-                 content-padding=""
-                 layout="column">
-                    <h2>Temperature vs Wind Speed vs Humidity</h2>
+            <div class="widget md-whiteframe-z2 flex"
+                 style="border-color: #ffffff; color: #ffffff; background-color: #ffffff;"
+                     subtitle="DASHBOARDS.ANALYTICS.DATE"
+                     content-layout="column"
+                     layout="column">
                     <div flex id="chartdiv" class="chart-container"></div>
+                </div>
+
             </div>
+
         </div>
     </div>
 
